@@ -6,9 +6,19 @@ import { S3Module } from './core/s3/s3.module';
 import { MailPoolModule } from './core/mail-pool/mail-pool.module';
 import { SharedModule } from './core/shared/shared.module';
 import { AuthModule } from './core/auth/auth.module';
+import { TestModule } from './modules/test/test.module';
 
 @Module({
-  imports: [RestClientModule, AppConfigModule, TranslationModule, S3Module, MailPoolModule, SharedModule, AuthModule],
+  imports: [
+    RestClientModule,
+    AppConfigModule,
+    TranslationModule,
+    S3Module,
+    MailPoolModule,
+    SharedModule,
+    AuthModule,
+    TestModule,
+  ],
   controllers: [],
   providers: [],
 })
