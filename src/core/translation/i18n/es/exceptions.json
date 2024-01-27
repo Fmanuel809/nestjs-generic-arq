@@ -1,3 +1,16 @@
-[
-    
-]
+{
+    "not_found": "Recurso no encontrado.",
+    "unauthorized": "Acceso no autorizado. Por favor, inicia sesión.",
+    "forbidden": "Acceso al recurso solicitado está prohibido.",
+    "validation_error": "Error de validación. Por favor, verifica tus datos.",
+    "server_error": "Error interno del servidor. Por favor, inténtalo de nuevo más tarde.",
+    "duplicate_entry": "Entrada duplicada. El registro ya existe.",
+    "bad_request": "Solicitud incorrecta. Proporciona datos válidos.",
+    "invalid_credentials": "Credenciales inválidas. Verifica tu nombre de usuario y contraseña.",
+    "file_upload_error": "Error al subir el archivo. Por favor, inténtalo de nuevo.",
+    "authentication_failed": "Autenticación fallida. No se pudo verificar tu identidad.",
+    "timeout_error": "Tiempo de espera agotado. Por favor, inténtalo de nuevo más tarde.",
+    "unavailable_service": "El servicio no está disponible en este momento. Por favor, inténtalo más tarde.",
+    "invalid_operation": "Operación no válida. La acción solicitada no está permitida.",
+    "insufficient_permissions": "Permisos insuficientes para realizar la operación solicitada."
+}

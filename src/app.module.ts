@@ -7,12 +7,13 @@ import { MailPoolModule } from './core/mail-pool/mail-pool.module';
 import { SharedModule } from './core/shared/shared.module';
 import { AuthModule } from './core/auth/auth.module';
 import { TestModule } from './modules/test/test.module';
+import { LANGUAGES } from './core/translation/constants/languages.const';
 
 @Module({
   imports: [
     RestClientModule,
     AppConfigModule,
-    TranslationModule,
+    TranslationModule.forRoot(LANGUAGES.ENGLISH),
     S3Module,
     MailPoolModule,
     SharedModule,

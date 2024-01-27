@@ -1,5 +1,6 @@
 import { Global, Module } from '@nestjs/common';
 import { TranslationService } from './translation.service';
+import { LANGUAGES } from './constants/languages.const';
 
 @Global()
 @Module({
@@ -7,7 +8,7 @@ import { TranslationService } from './translation.service';
     TranslationService,
     {
       provide: 'DEFAULT_LANGUAGE',
-      useValue: 'en',
+      useValue: LANGUAGES.ENGLISH,
     },
   ],
   exports: [TranslationService],

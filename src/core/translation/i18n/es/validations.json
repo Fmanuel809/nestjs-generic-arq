@@ -1,0 +1,16 @@
+{
+    "required": "El campo '%s' es obligatorio.",
+    "min_length": "El campo '%s' debe tener al menos %d caracteres.",
+    "max_length": "El campo '%s' no puede tener más de %d caracteres.",
+    "email": "El campo '%s' debe ser una dirección de correo electrónico válida.",
+    "numeric": "El campo '%s' debe ser un valor numérico.",
+    "integer": "El campo '%s' debe ser un número entero.",
+    "positive": "El campo '%s' debe ser un número positivo.",
+    "non_negative": "El campo '%s' debe ser un número no negativo.",
+    "date": "El campo '%s' debe ser una fecha válida en el formato YYYY-MM-DD.",
+    "enum": "El valor del campo '%s' no es válido. Debe ser uno de: %d.",
+    "unique": "El valor del campo '%s' ya está en uso. Por favor, elige otro.",
+    "url": "El campo '%s' debe ser una URL válida.",
+    "file_type": "El archivo seleccionado para '%s' no es válido. Tipos de archivo permitidos: %d.",
+    "file_size": "El archivo seleccionado para '%s' debe ser de tamaño menor o igual a %d KB."
+}
