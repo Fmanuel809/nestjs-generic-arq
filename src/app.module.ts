@@ -13,7 +13,9 @@ import { LANGUAGES } from './core/translation/constants/languages.const';
   imports: [
     RestClientModule,
     AppConfigModule,
-    TranslationModule.forRoot(LANGUAGES.ENGLISH),
+    TranslationModule.forRoot(
+      process.env.APP_DEFAULT_LOCALE || LANGUAGES.ENGLISH,
+    ),
     S3Module,
     MailPoolModule,
     SharedModule,
