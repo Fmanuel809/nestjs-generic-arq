@@ -8,6 +8,7 @@ import { SharedModule } from './core/shared/shared.module';
 import { AuthModule } from './core/auth/auth.module';
 import { TestModule } from './modules/test/test.module';
 import { LANGUAGES } from './core/translation/constants/languages.const';
+import { DatabaseModule } from './core/database/database.module';
 
 @Module({
   imports: [
@@ -21,6 +22,10 @@ import { LANGUAGES } from './core/translation/constants/languages.const';
     SharedModule,
     AuthModule,
     TestModule,
+    DatabaseModule.forRoot([
+      // Add your models here
+      //{ name: 'user', schema: UserSchema },
+    ]),
   ],
   controllers: [],
   providers: [],

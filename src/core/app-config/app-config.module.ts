@@ -12,5 +12,7 @@ import { configurations } from './config.register';
       isGlobal: true,
     }),
   ],
+  exports: [],
+  providers: [],
 })
 export class AppConfigModule {}
