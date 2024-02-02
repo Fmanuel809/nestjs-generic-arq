@@ -1,4 +1,4 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, HttpException } from '@nestjs/common';
 import { TestService } from './test.service';
 import { TranslationService } from 'src/core/translation/translation.service';
 import { ConfigService } from '@nestjs/config';
@@ -22,6 +22,13 @@ export class TestController {
 
   @Get('all')
   getAllTest(): Promise<any> {
+    throw new HttpException(
+      {
+        message: 'This resource is forbidden for you!',
+        cause: new Error('Forbidden error message'),
+      },
+      403,
+    );
     return this.testService.getTests();
   }
 

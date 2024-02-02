@@ -4,13 +4,12 @@
     "forbidden": "Access to the requested resource is forbidden.",
     "validation_error": "Validation error. Please check your input.",
     "server_error": "Internal server error. Please try again later.",
-    "duplicate_entry": "Duplicate entry. The record already exists.",
     "bad_request": "Bad request. Please provide valid data.",
-    "invalid_credentials": "Invalid credentials. Please check your username and password.",
-    "file_upload_error": "Error uploading the file. Please try again.",
-    "authentication_failed": "Authentication failed. Unable to verify your identity.",
     "timeout_error": "Request timeout. Please try again later.",
     "unavailable_service": "The service is currently unavailable. Please try again later.",
     "invalid_operation": "Invalid operation. The requested action is not allowed.",
-    "insufficient_permissions": "Insufficient permissions to perform the requested operation."
+    "not_implemented": "The requested operation is not implemented.",
+    "bad_gateway": "Bad gateway. Please try again later.",
+    "not_acceptable": "The requested resource is not available in the requested format.",
+    "unknown_error": "An error occurred. Please try again later. If the problem persists, please contact the system administrator."
 }

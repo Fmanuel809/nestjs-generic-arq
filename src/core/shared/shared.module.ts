@@ -1,4 +1,9 @@
 import { Module } from '@nestjs/common';
+import { SHARED_PROVIDERS } from './providers';
 
-@Module({})
+@Module({
+  imports: [],
+  providers: [...SHARED_PROVIDERS],
+  exports: [],
+})
 export class SharedModule {}

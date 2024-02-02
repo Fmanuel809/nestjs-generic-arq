@@ -1,0 +1,13 @@
+{
+    "duplicateKeyError": "Clave duplicada.",
+    "operationInterrupted": "Operación interrumpida.",
+    "userInputDataError": "Error en los datos de entrada del usuario.",
+    "networkError": "Error de red.",
+    "networkTimeout": "Tiempo de espera de red.",
+    "writeConflict": "Conflicto de escritura.",
+    "cursorNotFound": "Cursor no encontrado.",
+    "writeConcernError": "Error de preocupación de escritura.",
+    "indexBuildInProgress": "Construcción de índice ya en progreso.",
+    "unknownError": "Ocurrió un error inesperado en la base de datos, trate de nuevo más tarde, si el problema persiste, contacte con soporte técnico."
+}
+  

@@ -1,0 +1,13 @@
+{
+    "duplicateKeyError": "Duplicate key error.",
+    "operationInterrupted": "Operation interrupted.",
+    "userInputDataError": "User input data error.",
+    "networkError": "Network error.",
+    "networkTimeout": "Network timeout.",
+    "writeConflict": "Write conflict.",
+    "cursorNotFound": "Cursor not found.",
+    "writeConcernError": "Write concern error.",
+    "indexBuildInProgress": "Index build already in progress.",
+    "unknownError": "An error occurred that is not handled by a specific error code, please try again later, if the problem persists, please contact with IT support."
+}
+  
