@@ -5,4 +5,5 @@ export interface IDatabaseConfig {
   password: string;
   database: string;
   authDataBase: string;
+  hasAuthentication: boolean;
 }

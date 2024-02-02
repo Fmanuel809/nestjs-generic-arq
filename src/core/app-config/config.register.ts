@@ -23,7 +23,8 @@ const DBConfig = registerAs<IDatabaseConfig>(ConfigKey.Db, () => ({
   username: process.env.DATABASE_USERNAME,
   password: process.env.DATABASE_PASSWORD,
   database: process.env.DATABASE,
-  authDataBase: process.env.DATABASE_AUTH_DATABASE,
+  hasAuthentication: process.env.DATABASE_HAS_AUTHENTICATION === 'true',
+  authDataBase: process.env.AUTH_DATABASE,
 }));
 
 export const configurations = [APPConfig, DBConfig];

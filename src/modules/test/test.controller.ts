@@ -19,4 +19,14 @@ export class TestController {
     console.log(dbConfig);
     return { message: this.i18nService.translate('validations.required') };
   }
+
+  @Get('all')
+  getAllTest(): Promise<any> {
+    return this.testService.getTests();
+  }
+
+  @Get('create')
+  createTest(): Promise<any> {
+    return this.testService.createTest({ name: 'test' });
+  }
 }

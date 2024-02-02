@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import { Injectable } from '@nestjs/common';
+import { Injectable, Logger } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import {
   MongooseModuleOptions,
@@ -10,10 +10,15 @@ import { IDatabaseConfig } from 'src/core/app-config/interfaces/database.interfa
 
 @Injectable()
 export class MongooseConfigService implements MongooseOptionsFactory {
+  private readonly logger = new Logger(MongooseConfigService.name);
   constructor(private readonly cnfService: ConfigService) {}
   createMongooseOptions(): MongooseModuleOptions {
+    this.logger.log('Creating mongoose options');
     const dbConfig: IDatabaseConfig = this.cnfService.get(ConfigKey.Db);
-    const dbUri = `mongodb://${encodeURIComponent(dbConfig.username)}:${encodeURIComponent(dbConfig.password)}@${encodeURIComponent(dbConfig.host)}:${encodeURIComponent(dbConfig.port)}/?authSource=${encodeURIComponent(dbConfig.authDataBase)}`;
+    let dbUri = `mongodb://${encodeURIComponent(dbConfig.host)}:${encodeURIComponent(dbConfig.port)}/`;
+    if (dbConfig.hasAuthentication) {
+        dbUri = `mongodb://${encodeURIComponent(dbConfig.username)}:${encodeURIComponent(dbConfig.password)}@${encodeURIComponent(dbConfig.host)}:${encodeURIComponent(dbConfig.port)}/?authSource=${encodeURIComponent(dbConfig.authDataBase)}`;
+    }
     return {
       uri: dbUri,
       dbName: dbConfig.database,   

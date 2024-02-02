@@ -1,8 +1,9 @@
-import { Module } from '@nestjs/common';
+import { Global, Module } from '@nestjs/common';
 import { DATABASE_MODELS, DatabaseModel } from './collections';
 import { MongooseModule } from '@nestjs/mongoose';
 import { MongooseConfigService } from './providers/mongoose-config.service';
 
+@Global()
 @Module({})
 export class DatabaseModule {
   static forRoot(models: DatabaseModel[]): any {

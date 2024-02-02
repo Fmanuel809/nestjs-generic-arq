@@ -9,23 +9,24 @@ import { AuthModule } from './core/auth/auth.module';
 import { TestModule } from './modules/test/test.module';
 import { LANGUAGES } from './core/translation/constants/languages.const';
 import { DatabaseModule } from './core/database/database.module';
+import { Test, TestSchema } from './modules/test/test.entity';
 
 @Module({
   imports: [
-    RestClientModule,
-    AppConfigModule,
+    DatabaseModule.forRoot([
+      // Add your models here
+      { name: Test.name, schema: TestSchema },
+    ]),
     TranslationModule.forRoot(
       process.env.APP_DEFAULT_LOCALE || LANGUAGES.ENGLISH,
     ),
+    RestClientModule,
+    AppConfigModule,
     S3Module,
     MailPoolModule,
     SharedModule,
     AuthModule,
     TestModule,
-    DatabaseModule.forRoot([
-      // Add your models here
-      //{ name: 'user', schema: UserSchema },
-    ]),
   ],
   controllers: [],
   providers: [],
