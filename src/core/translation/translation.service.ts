@@ -66,7 +66,8 @@ export class TranslationService implements OnModuleInit {
   public translate(key: string, language?: string): string {
     if (language && language !== this.defaultLanguage) {
       const i18n = this.loadLanguageFiles(language);
-      return i18n[key] || key;
+      if (!i18n) return key;
+      return i18n[key];
     }
     return this.i18n[key] || key;
   }

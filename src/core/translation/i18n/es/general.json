@@ -1,4 +1,5 @@
 {
     "httpError": "Error de conexión",
-    "dbError": "Error de base de datos"
+    "dbError": "Error de base de datos",
+    "operation_success": "Operación exitosa"
 }

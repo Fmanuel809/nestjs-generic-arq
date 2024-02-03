@@ -1,9 +1,12 @@
-import { Controller, Get, HttpException } from '@nestjs/common';
+import { Controller, Get } from '@nestjs/common';
 import { TestService } from './test.service';
 import { TranslationService } from 'src/core/translation/translation.service';
 import { ConfigService } from '@nestjs/config';
 import { IDatabaseConfig } from 'src/core/app-config/interfaces/database.interface';
 import { ConfigKey } from 'src/core/app-config/enums/config-key.enum';
+import { TransformResponse } from '../../core/shared/decorators/dropdown-response.decorator';
+import { ResponseType } from 'src/core/shared/enums/response-type.enum';
+import { IPaginatedData } from 'src/core/shared/interfaces/paginated-data.interface';
 
 @Controller('api/test')
 export class TestController {
@@ -21,15 +24,32 @@ export class TestController {
   }
 
   @Get('all')
-  getAllTest(): Promise<any> {
-    throw new HttpException(
-      {
-        message: 'This resource is forbidden for you!',
-        cause: new Error('Forbidden error message'),
+  @TransformResponse(ResponseType.PAGINATED)
+  getAllTest(): IPaginatedData<Record<string, any>> {
+    return {
+      data: [
+        {
+          _id: 1,
+          name: 'test',
+        },
+        {
+          _id: 2,
+          name: 'test2',
+        },
+        {
+          _id: 3,
+          name: 'test3',
+        },
+      ],
+      meta: {
+        currentPage: 1,
+        totalPages: 1,
+        pageSize: 10,
+        totalCount: 3,
+        hasPrevious: false,
+        hasNext: false,
       },
-      403,
-    );
-    return this.testService.getTests();
+    };
   }
 
   @Get('create')
