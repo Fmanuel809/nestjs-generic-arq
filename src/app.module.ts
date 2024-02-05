@@ -20,11 +20,11 @@ import { Test, TestSchema } from './modules/test/test.entity';
     TranslationModule.forRoot(
       process.env.APP_DEFAULT_LOCALE || LANGUAGES.ENGLISH,
     ),
+    SharedModule.forRoot(),
     RestClientModule,
     AppConfigModule,
     S3Module,
     MailPoolModule,
-    SharedModule,
     AuthModule,
     TestModule,
   ],
