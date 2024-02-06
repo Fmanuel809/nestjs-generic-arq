@@ -11,5 +11,6 @@
     "not_implemented": "The requested operation is not implemented.",
     "bad_gateway": "Bad gateway. Please try again later.",
     "not_acceptable": "The requested resource is not available in the requested format.",
-    "unknown_error": "An error occurred. Please try again later. If the problem persists, please contact the system administrator."
+    "unknown_error": "An error occurred. Please try again later. If the problem persists, please contact the system administrator.",
+    "help_not_implemented": "This controller does not have a proper help configuration."
 }

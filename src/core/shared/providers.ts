@@ -5,6 +5,7 @@ import { ResponseInterceptor } from './interceptors/Response.interceptor';
 import { DateService } from './providers/date.service';
 import { MOMENT_WRAPPER } from './contants';
 import { UtilService } from './providers/util.service';
+import { HelpService } from './providers/help.service';
 
 export const SHARED_PROVIDERS = [
   {
@@ -25,4 +26,5 @@ export const SHARED_PROVIDERS = [
   },
   DateService,
   UtilService,
+  HelpService,
 ];

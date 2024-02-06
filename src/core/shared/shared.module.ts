@@ -6,6 +6,9 @@ import {
 } from './contants';
 import { ModuleConfig } from './module-config.type';
 import { LANGUAGES } from '../translation/constants/languages.const';
+import { DateService } from './providers/date.service';
+import { HelpService } from './providers/help.service';
+import { UtilService } from './providers/util.service';
 
 const DEFFAULT_CONFIG: ModuleConfig = {
   dateServiceOptions: {
@@ -31,6 +34,7 @@ export class SharedModule {
         },
         ...SHARED_PROVIDERS,
       ],
+      exports: [DateService, UtilService, HelpService],
     };
   }
 }

@@ -1,3 +1,5 @@
+import * as sanitizeHtml from 'sanitize-html';
+
 export const MODULE_CONFIG = 'module_config';
 export const MOMENT_WRAPPER = 'moment_wrapper';
 
@@ -20,3 +22,29 @@ export const DATE_FORMAT_LONG_DATE = 'dddd, MMMM Do, YYYY';
 export const DATE_FORMAT_LONG_DATE_WITH_TIME = 'dddd, MMMM Do, YYYY h:mm:ss a';
 export const DATE_FORMAT_MONTH_NAME = 'MMMM';
 export const DATE_FORMAT_DAY_NAME = 'dddd';
+
+// Utils
+export const SANITIZE_HTML_OPTIONS: sanitizeHtml.IOptions = {
+  allowedTags: sanitizeHtml.defaults.allowedTags.concat([
+    'h1',
+    'h2',
+    'img',
+    'style',
+  ]),
+  allowedAttributes: {
+    '*': ['class', 'id', 'style'],
+    img: ['src', 'alt'],
+  },
+  allowedIframeHostnames: [],
+  nonTextTags: ['script', 'textarea', 'noscript'],
+  allowVulnerableTags: true,
+  exclusiveFilter: (frame) => {
+    return frame.tag === 'script';
+  },
+  textFilter: (text, tagName) => {
+    if (tagName === 'title') {
+      return '';
+    }
+    return text;
+  },
+};

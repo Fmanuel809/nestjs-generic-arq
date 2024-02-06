@@ -1,34 +1,13 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { minify } from 'html-minifier';
 import * as sanitizeHtml from 'sanitize-html';
+import { SANITIZE_HTML_OPTIONS } from '../contants';
 
 @Injectable()
 export class UtilService {
   private readonly logger = new Logger(UtilService.name);
-  private readonly sanitizeHtmlOptions: sanitizeHtml.IOptions = {
-    allowedTags: sanitizeHtml.defaults.allowedTags.concat([
-      'h1',
-      'h2',
-      'img',
-      'style',
-    ]),
-    allowedAttributes: {
-      '*': ['class', 'id', 'style'],
-      img: ['src', 'alt'],
-    },
-    allowedIframeHostnames: [],
-    nonTextTags: ['script', 'textarea', 'noscript'],
-    allowVulnerableTags: true,
-    exclusiveFilter: (frame) => {
-      return frame.tag === 'script';
-    },
-    textFilter: (text, tagName) => {
-      if (tagName === 'title') {
-        return '';
-      }
-      return text;
-    },
-  };
+  private readonly sanitizeHtmlOptions = SANITIZE_HTML_OPTIONS;
+
   constructor() {}
 
   sanitizeHtml(html: string): string {
@@ -45,6 +24,7 @@ export class UtilService {
       removeScriptTypeAttributes: true,
       removeStyleLinkTypeAttributes: true,
       useShortDoctype: true,
+      minifyCSS: true,
     });
   }
 

@@ -11,6 +11,7 @@
     "not_implemented": "La operación solicitada no está implementada.",
     "bad_gateway": "Puerta de enlace incorrecta. Por favor, inténtalo de nuevo más tarde.",
     "not_acceptable": "El recurso solicitado no está disponible en el formato solicitado.",
-    "unknown_error": "Se produjo un error. Por favor, inténtalo de nuevo más tarde. Si el problema persiste, contacta al administrador del sistema."
+    "unknown_error": "Se produjo un error. Por favor, inténtalo de nuevo más tarde. Si el problema persiste, contacta al administrador del sistema.",
+    "help_not_implemented": "El controlador no tiene no tiene la configuración de ayuda."
 }
   

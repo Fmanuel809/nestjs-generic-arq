@@ -54,6 +54,13 @@ export class HttpExceptionFilter implements ExceptionFilter {
         break;
 
       case HttpStatus.NOT_IMPLEMENTED:
+        if (exception.cause === 'help_service') {
+          message = this.i18nService.translate(
+            'exceptions.help_not_implemented',
+            locale,
+          );
+          break;
+        }
         message = this.i18nService.translate(
           'exceptions.not_implemented',
           locale,
