@@ -12,6 +12,7 @@
     "bad_gateway": "Puerta de enlace incorrecta. Por favor, inténtalo de nuevo más tarde.",
     "not_acceptable": "El recurso solicitado no está disponible en el formato solicitado.",
     "unknown_error": "Se produjo un error. Por favor, inténtalo de nuevo más tarde. Si el problema persiste, contacta al administrador del sistema.",
-    "help_not_implemented": "El controlador no tiene no tiene la configuración de ayuda."
+    "help_not_implemented": "El controlador no tiene no tiene la configuración de ayuda.",
+    "mapping_error": "Error de mapeo. No se puede mapear la respuesta del servidor.",
+    "response_error": "Error de respuesta. No se puede procesar la respuesta del servidor."
 }
-  

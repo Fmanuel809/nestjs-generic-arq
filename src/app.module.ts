@@ -10,7 +10,6 @@ import { TestModule } from './modules/test/test.module';
 import { LANGUAGES } from './core/translation/constants/languages.const';
 import { DatabaseModule } from './core/database/database.module';
 import { Test, TestSchema } from './modules/test/test.entity';
-
 @Module({
   imports: [
     DatabaseModule.forRoot([

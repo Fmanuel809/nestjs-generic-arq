@@ -11,6 +11,8 @@ import { TranslationService } from 'src/core/translation/translation.service';
 import { IErrorResponse } from '../interfaces/error-response.interface';
 import { ConfigKey } from 'src/core/app-config/enums/config-key.enum';
 import { IAppConfig } from 'src/core/app-config/interfaces/app-config.interface';
+import { MappingErrorException } from '../exceptions/MappingError.exception';
+import { TransformResponseErrorException } from '../exceptions/TransformResponseError.exception';
 
 @Catch(HttpException)
 export class HttpExceptionFilter implements ExceptionFilter {
@@ -50,6 +52,19 @@ export class HttpExceptionFilter implements ExceptionFilter {
         break;
 
       case HttpStatus.INTERNAL_SERVER_ERROR:
+        if (exception instanceof MappingErrorException) {
+          message = this.i18nService.translate(
+            'exceptions.mapping_error',
+            locale,
+          );
+          break;
+        } else if (exception instanceof TransformResponseErrorException) {
+          message = this.i18nService.translate(
+            'exceptions.response_error',
+            locale,
+          );
+          break;
+        }
         message = this.i18nService.translate('exceptions.server_error', locale);
         break;
 
