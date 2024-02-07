@@ -49,7 +49,7 @@ export class ResponseInterceptor<T>
 
     return next.handle().pipe(
       map((data) => {
-        switch (responseConfig.responseType) {
+        switch (responseConfig?.responseType || ResponseType.DEFAULT) {
           case ResponseType.PAGINATED:
             const paginatedData: IPaginatedData<T> = data as IPaginatedData<T>;
             return {
@@ -84,6 +84,15 @@ export class ResponseInterceptor<T>
               ),
               statusCode: HttpStatus.OK,
               data: res,
+            };
+          case ResponseType.HELP:
+            return {
+              message: this.i18nService.translate(
+                'general.operation_success',
+                locale,
+              ),
+              statusCode: HttpStatus.OK,
+              data: data,
             };
           default:
             return {

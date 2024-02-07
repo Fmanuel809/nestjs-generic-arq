@@ -21,7 +21,7 @@ export class HttpExceptionFilter implements ExceptionFilter {
     private readonly cnfService: ConfigService,
   ) {}
 
-  catch(exception: HttpException, host: ArgumentsHost) {
+  catch(exception: any, host: ArgumentsHost) {
     const appCnf = this.cnfService.get<IAppConfig>(ConfigKey.App);
     const logger = new Logger(HttpExceptionFilter.name);
     logger.error(exception.message);
@@ -30,10 +30,10 @@ export class HttpExceptionFilter implements ExceptionFilter {
     const request = ctx.getRequest();
     const locale = request.headers['x-locale'] || appCnf.appDefaultLocale;
 
-    const status = exception.getStatus() || HttpStatus.INTERNAL_SERVER_ERROR;
+    const status =
+      exception.response.status || HttpStatus.INTERNAL_SERVER_ERROR;
     let message = '';
     const titleError = this.i18nService.translate('general.httpError', locale);
-
     switch (status) {
       case HttpStatus.BAD_REQUEST:
         message = this.i18nService.translate('exceptions.bad_request', locale);

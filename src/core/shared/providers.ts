@@ -7,6 +7,7 @@ import { MOMENT_WRAPPER } from './contants';
 import { UtilService } from './providers/util.service';
 import { HelpService } from './providers/help.service';
 import { MapperService } from './providers/mapper.service';
+import { HelpProfile } from './providers/help.profile';
 
 export const SHARED_PROVIDERS = [
   {
@@ -29,4 +30,5 @@ export const SHARED_PROVIDERS = [
   UtilService,
   HelpService,
   MapperService,
+  HelpProfile,
 ];

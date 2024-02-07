@@ -20,10 +20,10 @@ export class TestController extends HelpController {
     private readonly testService: TestService,
     private readonly i18nService: TranslationService,
     private readonly configService: ConfigService,
-    private readonly mapperService: MapperService,
+    mapperService: MapperService,
     helpService: HelpService,
   ) {
-    super(helpService, TestController);
+    super(helpService, TestController, mapperService);
   }
 
   @Get()
