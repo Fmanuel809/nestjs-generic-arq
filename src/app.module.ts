@@ -12,10 +12,13 @@ import { DatabaseModule } from './core/database/database.module';
 import { Test, TestSchema } from './modules/test/test.entity';
 @Module({
   imports: [
-    DatabaseModule.forRoot([
-      // Add your models here
-      { name: Test.name, schema: TestSchema },
-    ]),
+    DatabaseModule.forRoot({
+      autoRegisterModels: true,
+      models: [
+        // Add your models here
+        { name: Test.name, schema: TestSchema },
+      ],
+    }),
     TranslationModule.forRoot(
       process.env.APP_DEFAULT_LOCALE || LANGUAGES.ENGLISH,
     ),

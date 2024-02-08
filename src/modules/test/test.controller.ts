@@ -2,8 +2,6 @@ import { Controller, Get } from '@nestjs/common';
 import { TestService } from './test.service';
 import { TranslationService } from 'src/core/translation/translation.service';
 import { ConfigService } from '@nestjs/config';
-import { IDatabaseConfig } from 'src/core/app-config/interfaces/database.interface';
-import { ConfigKey } from 'src/core/app-config/enums/config-key.enum';
 import { TransformResponse } from '../../core/shared/decorators/transform-response.decorator';
 import { ResponseType } from 'src/core/shared/enums/response-type.enum';
 import { HelpService } from 'src/core/shared/providers/help.service';
@@ -24,13 +22,6 @@ export class TestController extends HelpController {
     helpService: HelpService,
   ) {
     super(helpService, TestController, mapperService);
-  }
-
-  @Get()
-  get(): Record<string, string> {
-    const dbConfig = this.configService.get<IDatabaseConfig>(ConfigKey.Db);
-    console.log(dbConfig);
-    return { message: this.i18nService.translate('validations.required') };
   }
 
   @Get('all')
