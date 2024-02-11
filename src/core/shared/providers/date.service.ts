@@ -213,25 +213,4 @@ export class DateService {
       throw error;
     }
   }
-
-  /**
-   * Adds the specified value to the given date based on the specified time unit.
-   * @public
-   * @param date - The date to which the value will be added.
-   * @param unitTime - The unit of time for the addition.
-   * @param value - The value to be added.
-   * @returns The resulting date after the addition.
-   */
-  public timeAddition(
-    date: Date,
-    unitTime: 'days' | 'hours' | 'minutes' | 'seconds' | 'milliseconds',
-    value: number,
-  ): Date {
-    try {
-      return this.momentService(date).add(value, unitTime).toDate();
-    } catch (error) {
-      this.logger.error(error);
-      throw error;
-    }
-  }
 }
