@@ -14,5 +14,6 @@
     "unknown_error": "An error occurred. Please try again later. If the problem persists, please contact the system administrator.",
     "help_not_implemented": "This controller does not have a proper help configuration.",
     "mapping_error": "An error occurred while mapping the request to the resource.",
-    "response_error": "An error occurred while generating the response."
+    "response_error": "An error occurred while generating the response.",
+    "remote_error": "An error occurred while processing the remote request."
 }

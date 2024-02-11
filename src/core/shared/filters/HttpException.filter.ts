@@ -13,6 +13,7 @@ import { ConfigKey } from 'src/core/app-config/enums/config-key.enum';
 import { IAppConfig } from 'src/core/app-config/interfaces/app-config.interface';
 import { MappingErrorException } from '../exceptions/MappingError.exception';
 import { TransformResponseErrorException } from '../exceptions/TransformResponseError.exception';
+import { RemoteErrorException } from 'src/core/rest-client/remote-error.exception';
 
 @Catch(HttpException)
 export class HttpExceptionFilter implements ExceptionFilter {
@@ -87,6 +88,13 @@ export class HttpExceptionFilter implements ExceptionFilter {
         break;
 
       case HttpStatus.SERVICE_UNAVAILABLE:
+        if (exception instanceof RemoteErrorException) {
+          message = this.i18nService.translate(
+            'exceptions.remote_error',
+            locale,
+          );
+          break;
+        }
         message = this.i18nService.translate(
           'exceptions.service_unavailable',
           locale,
@@ -134,9 +142,9 @@ export class HttpExceptionFilter implements ExceptionFilter {
       title: titleError,
       message,
       trace: {
-        error: exception.message,
         name: exception.name,
         stack: exception.stack,
+        exception,
       },
     };
 
