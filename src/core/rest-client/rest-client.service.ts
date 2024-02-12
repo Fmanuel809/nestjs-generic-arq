@@ -5,16 +5,12 @@ import { AxiosError } from 'axios';
 import { catchError, lastValueFrom } from 'rxjs';
 import { IRequestParams } from './IRequestParams';
 import { Agent } from 'https';
-import { ConfigService } from '@nestjs/config';
 import { RemoteErrorException } from './remote-error.exception';
 
 @Injectable()
 export class RestClientService {
   private readonly logger = new Logger(RestClientService.name);
-  constructor(
-    private readonly configService: ConfigService,
-    private readonly httpService: HttpService,
-  ) {}
+  constructor(private readonly httpService: HttpService) {}
 
   /**
    * Envía una solicitud HTTP utilizando Axios y devuelve la respuesta en el formato especificado.

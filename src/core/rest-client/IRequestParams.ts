@@ -9,7 +9,6 @@ import { IRequestBody } from './request-body.interface';
  *
  * @public
  */
-
 export interface IRequestParams {
   /**
    * El método HTTP para la solicitud.
