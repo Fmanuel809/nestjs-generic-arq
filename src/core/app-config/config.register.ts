@@ -3,6 +3,8 @@ import { ConfigKey } from './enums/config-key.enum';
 import { Environment } from './enums/env.enum';
 import { IDatabaseConfig } from './interfaces/database.interface';
 import { IAppConfig } from './interfaces/app-config.interface';
+import { StorageDriver } from './enums/storage-driver.enum';
+import { IS3Config } from './interfaces/s3-config.interface';
 
 const APPConfig = registerAs<IAppConfig>(ConfigKey.App, () => {
   return {
@@ -14,6 +16,7 @@ const APPConfig = registerAs<IAppConfig>(ConfigKey.App, () => {
     appVersion: process.env.APP_VERSION,
     appUrl: process.env.APP_URL,
     appDefaultLocale: process.env.APP_DEFAULT_LOCALE,
+    storageDriver: (process.env.STORAGE_DRIVER || 'local') as StorageDriver,
   };
 });
 
@@ -27,4 +30,12 @@ const DBConfig = registerAs<IDatabaseConfig>(ConfigKey.Db, () => ({
   authDataBase: process.env.AUTH_DATABASE,
 }));
 
-export const configurations = [APPConfig, DBConfig];
+const S3Config = registerAs<IS3Config>(ConfigKey.S3, () => ({
+  endPoint: process.env.S3_END_POINT,
+  port: Number(process.env.S3_PORT),
+  useSSL: process.env.S3_USE_SSL === 'true',
+  accessKey: process.env.S3_ACCESS_KEY,
+  secretKey: process.env.S3_SECRET_KEY,
+}));
+
+export const configurations = [APPConfig, DBConfig, S3Config];

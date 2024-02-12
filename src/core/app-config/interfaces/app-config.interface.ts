@@ -1,3 +1,5 @@
+import { StorageDriver } from '../enums/storage-driver.enum';
+
 export interface IAppConfig {
   appName: string;
   appDescription: string;
@@ -5,4 +7,5 @@ export interface IAppConfig {
   appUrl: string;
   appEnv: string;
   appDefaultLocale: string;
+  storageDriver: StorageDriver;
 }
