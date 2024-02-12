@@ -19,6 +19,7 @@ import { classes } from '@automapper/classes';
 import { MapperService } from './providers/mapper.service';
 import { MappingErrorHandler } from './exceptions/MappingError.exception';
 import * as path from 'path';
+import { SharedController } from './shared.controller';
 
 const DEFFAULT_CONFIG: ModuleConfig = {
   withMapper: true,
@@ -53,6 +54,7 @@ export class SharedModule {
 
     return {
       module: SharedModule,
+      controllers: [SharedController],
       imports: [
         AutomapperModule.forRoot({
           strategyInitializer: classes(),

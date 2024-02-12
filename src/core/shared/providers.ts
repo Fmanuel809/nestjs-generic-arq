@@ -8,11 +8,17 @@ import { UtilService } from './providers/util.service';
 import { HelpService } from './providers/help.service';
 import { MapperService } from './providers/mapper.service';
 import { HelpProfile } from './providers/help.profile';
+import { SystemLogService } from './providers/system-log.service';
+import { MongooseErrorFilter } from './filters/MongooseError.filter';
 
 export const SHARED_PROVIDERS = [
   {
     provide: APP_FILTER,
     useClass: MongoDbExceptionFilter,
+  },
+  {
+    provide: APP_FILTER,
+    useClass: MongooseErrorFilter,
   },
   {
     provide: APP_FILTER,
@@ -31,4 +37,5 @@ export const SHARED_PROVIDERS = [
   HelpService,
   MapperService,
   HelpProfile,
+  SystemLogService,
 ];

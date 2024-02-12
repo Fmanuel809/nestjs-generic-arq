@@ -13,7 +13,17 @@ export class SystemLogService {
   }
 
   async create(data: Partial<SystemLog>) {
+    data._id = null;
     const createdData = new this.model(data);
     return await createdData.save();
+  }
+
+  /**
+   * Purge the system logs older than 30 days
+   */
+  async purge() {
+    const date = new Date();
+    date.setDate(date.getDate() - 30);
+    return await this.model.deleteMany({ createdAt: { $lt: date } });
   }
 }

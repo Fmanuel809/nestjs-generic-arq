@@ -14,18 +14,19 @@ import { IAppConfig } from 'src/core/app-config/interfaces/app-config.interface'
 import { MappingErrorException } from '../exceptions/MappingError.exception';
 import { TransformResponseErrorException } from '../exceptions/TransformResponseError.exception';
 import { RemoteErrorException } from 'src/core/rest-client/remote-error.exception';
+import { SystemLogService } from '../providers/system-log.service';
 
 @Catch(HttpException)
 export class HttpExceptionFilter implements ExceptionFilter {
   constructor(
     private readonly i18nService: TranslationService,
     private readonly cnfService: ConfigService,
+    private readonly syetemLogger: SystemLogService,
   ) {}
 
   catch(exception: any, host: ArgumentsHost) {
     const appCnf = this.cnfService.get<IAppConfig>(ConfigKey.App);
     const logger = new Logger(HttpExceptionFilter.name);
-    logger.error(exception.message);
     const ctx = host.switchToHttp();
     const response = ctx.getResponse();
     const request = ctx.getRequest();
@@ -147,6 +148,25 @@ export class HttpExceptionFilter implements ExceptionFilter {
         exception,
       },
     };
+
+    this.syetemLogger.create({
+      type: status === HttpStatus.INTERNAL_SERVER_ERROR ? 'error' : 'warn',
+      message,
+      stack: exception.stack,
+      name: exception.name,
+      status,
+      request: {
+        method: request.method,
+        url: request.url,
+        headers: request.headers,
+        body: request.body,
+        query: request.query,
+      },
+    });
+
+    if (status === HttpStatus.INTERNAL_SERVER_ERROR)
+      logger.error(`Error on ${request.method}: ${exception.message}`);
+    else logger.warn(`Error on ${request.method}: ${exception.message}`);
 
     response.status(status).json(res);
   }

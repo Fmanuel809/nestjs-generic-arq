@@ -19,7 +19,7 @@ export class MongoDbExceptionFilter implements ExceptionFilter {
     private readonly cnfService: ConfigService,
   ) {}
 
-  catch(exception: mongoose.mongo.MongoError, host: ArgumentsHost) {
+  catch(exception: any, host: ArgumentsHost) {
     const logger = new Logger('MongoDBError');
     const appCnf = this.cnfService.get<IAppConfig>(ConfigKey.App);
     logger.error(exception.errmsg || exception.message);
