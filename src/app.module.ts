@@ -9,7 +9,6 @@ import { LANGUAGES } from './core/translation/constants/languages.const';
 import { DatabaseModule } from './core/database/database.module';
 import { RestClientModule } from './core/rest-client/rest-client.module';
 import { StorageModule } from './core/storage/storage.module';
-import { StorageConfigFactory } from './core/storage/providers/storage-config.factory';
 @Module({
   imports: [
     DatabaseModule.forRoot({
@@ -18,9 +17,7 @@ import { StorageConfigFactory } from './core/storage/providers/storage-config.fa
     TranslationModule.forRoot(
       process.env.APP_DEFAULT_LOCALE || LANGUAGES.ENGLISH,
     ),
-    StorageModule.registerAsync({
-      useClass: StorageConfigFactory,
-    }),
+    StorageModule.register(),
     SharedModule.forRoot(),
     RestClientModule,
     AppConfigModule,

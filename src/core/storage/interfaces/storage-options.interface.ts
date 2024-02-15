@@ -1,11 +1,19 @@
 import { StorageDriver } from 'src/core/app-config/enums/storage-driver.enum';
 import { IS3Config } from 'src/core/app-config/interfaces/s3-config.interface';
 
+/**
+ * The options for the storage service
+ * @property driver - The storage driver to use
+ * @property s3Config - The S3 configuration if using the S3 driver
+ */
 export interface IStorageOptions {
+  /**
+   * The storage driver to use
+   */
   driver: StorageDriver;
-  s3Config: IS3Config;
-}
 
-export interface StorageOptionsFactory {
-  createStorageOptions(): Promise<IStorageOptions> | IStorageOptions;
+  /**
+   * The S3 configuration if using the S3 driver
+   */
+  s3Config?: IS3Config;
 }

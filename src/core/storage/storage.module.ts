@@ -1,20 +1,47 @@
-import { ConfigurableModuleAsyncOptions, Logger, Module } from '@nestjs/common';
-import { ConfigurableModuleClass } from './config.module-definition';
+import { Module } from '@nestjs/common';
 import { IStorageOptions } from './interfaces/storage-options.interface';
+import { StorageDriver } from '../app-config/enums/storage-driver.enum';
+import { MinioModule } from 'nestjs-minio-client';
 
-@Module({})
-export class StorageModule extends ConfigurableModuleClass {
-  static registerAsync(
-    options: ConfigurableModuleAsyncOptions<
-      IStorageOptions,
-      'createStorageOptions'
-    > &
-      Partial<object>,
-  ) {
-    const logger = new Logger(StorageModule.name);
-    logger.debug('Storage module initialized');
+@Module({
+  imports: [],
+  providers: [],
+  exports: [],
+})
+export class StorageModule {
+  constructor() {}
+  static register(options: IStorageOptions = { driver: StorageDriver.LOCAL }) {
+    const imports = [];
+    if (options.driver === StorageDriver.S3) {
+      imports.push({
+        module: MinioModule,
+        imports: [],
+        providers: [
+          {
+            provide: 'MINIO_CONNECTION_OPTIONS',
+            useValue: {
+              endPoint: options.s3Config.endPoint,
+              port: options.s3Config.port,
+              useSSL: options.s3Config.useSSL,
+              accessKey: options.s3Config.accessKey,
+              secretKey: options.s3Config.secretKey,
+            },
+          },
+        ],
+        exports: [],
+      });
+    }
+
     return {
-      ...super.registerAsync(options),
+      module: StorageModule,
+      imports: [],
+      providers: [
+        {
+          provide: 'STORAGE_OPTIONS',
+          useValue: options,
+        },
+      ],
+      exports: [],
     };
   }
 }
