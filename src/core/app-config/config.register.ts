@@ -36,6 +36,8 @@ const S3Config = registerAs<IS3Config>(ConfigKey.S3, () => ({
   useSSL: process.env.S3_USE_SSL === 'true',
   accessKey: process.env.S3_ACCESS_KEY,
   secretKey: process.env.S3_SECRET_KEY,
+  objectLocking: process.env.S3_OBJECT_LOCKING === 'true',
+  retentionPeriod: Number(process.env.S3_RETENTION_PERIOD),
 }));
 
 export const configurations = [APPConfig, DBConfig, S3Config];

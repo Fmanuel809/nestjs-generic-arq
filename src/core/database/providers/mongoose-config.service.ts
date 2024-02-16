@@ -10,7 +10,7 @@ import { IDatabaseConfig } from 'src/core/app-config/interfaces/database.interfa
 
 @Injectable()
 export class MongooseConfigService implements MongooseOptionsFactory {
-  private readonly logger = new Logger(MongooseConfigService.name);
+  private readonly logger = new Logger(MongooseConfigService.name, { timestamp: true });
   constructor(private readonly cnfService: ConfigService) {}
   createMongooseOptions(): MongooseModuleOptions {
     this.logger.log('Creating mongoose options');

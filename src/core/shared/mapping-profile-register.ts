@@ -4,7 +4,9 @@ import * as fs from 'fs';
 import { MAPPING_PROFILE } from './decorators/mapping-profile.decorator';
 import { AutomapperProfile } from '@automapper/nestjs';
 
-export const mappingProfileLogger = new Logger('MappingProfileRegister');
+export const mappingProfileLogger = new Logger('MappingProfileRegister', {
+  timestamp: true,
+});
 
 export const MAPPIG_PROFILES: Provider[] = [];
 

@@ -5,7 +5,7 @@ import * as path from 'path';
 @Injectable()
 export class TranslationService implements OnModuleInit {
   private i18n: Record<string, string> = {};
-  private logger = new Logger('TranslationModule');
+  private logger = new Logger('TranslationModule', { timestamp: true });
   constructor(@Inject('DEFAULT_LANGUAGE') private defaultLanguage: string) {}
 
   onModuleInit() {

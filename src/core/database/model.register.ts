@@ -5,7 +5,9 @@ import { SELF_REGISTERED_MODEL } from './register-model.decorator';
 import { DatabaseModel } from './collections';
 import mongoose from 'mongoose';
 
-export const ModelRegisterLogger = new Logger('ModelRegister');
+export const ModelRegisterLogger = new Logger('ModelRegister', {
+  timestamp: true,
+});
 
 /**
  * The models to be registered automatically
