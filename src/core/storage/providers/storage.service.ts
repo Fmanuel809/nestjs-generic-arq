@@ -6,11 +6,7 @@ import { ConfigService } from '@nestjs/config';
 import { IAppConfig } from 'src/core/app-config/interfaces/app-config.interface';
 import { ConfigKey } from 'src/core/app-config/enums/config-key.enum';
 import { MinIOException } from '../exceptions';
-import {
-  RETENTION_MODES,
-  RETENTION_VALIDITY_UNITS,
-  ReplicationRuleStatus,
-} from '../types';
+import { RETENTION_MODES, RETENTION_VALIDITY_UNITS } from '../types';
 
 @Injectable()
 export class StorageService implements OnModuleInit {
@@ -33,48 +29,17 @@ export class StorageService implements OnModuleInit {
           this.minioService.client.makeBucket(bucketName, 'us-east-1', {
             ObjectLocking: objectLocking,
           });
-
-          this.logger.log(
-            `App Storage has been initialized with ${this.options.driver} driver. Bucket name: ${bucketName}`,
-          );
         }
 
+        this.logger.log(
+          `App Storage has been initialized with ${this.options.driver} driver. Bucket name: ${bucketName}`,
+        );
         if (objectLocking)
           this.minioService.client.setObjectLockConfig(bucketName, {
             mode: RETENTION_MODES.GOVERNANCE,
             unit: RETENTION_VALIDITY_UNITS.YEARS,
             validity: this.options.s3Config.retentionPeriod,
           });
-
-        this.minioService.client.setBucketReplication(bucketName, {
-          role: 'arn:aws:iam::123456789012:role/replication-role',
-          rules: [
-            {
-              ID: 'rule1',
-              Status: 'Enabled' as unknown as ReplicationRuleStatus,
-              Priority: 1,
-              DeleteMarkerReplication: {
-                Status: 'Enabled',
-              },
-              DeleteReplication: {
-                Status: 'Enabled',
-              },
-              ExistingObjectReplication: {
-                Status: 'Enabled' as unknown as ReplicationRuleStatus,
-              },
-              Destination: {
-                Bucket: 'arn:aws:s3:::destination-bucket',
-                StorageClass: 'REDUCED_REDUNDANCY',
-              },
-              SourceSelectionCriteria: {
-                ReplicaModifications: {
-                  Status: 'Enabled' as unknown as ReplicationRuleStatus,
-                },
-              },
-              Filter: {} as any,
-            },
-          ],
-        });
       })
       .catch((error) => this._manageError(error, true));
   }

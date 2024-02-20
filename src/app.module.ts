@@ -9,7 +9,7 @@ import { LANGUAGES } from './core/translation/constants/languages.const';
 import { DatabaseModule } from './core/database/database.module';
 import { RestClientModule } from './core/rest-client/rest-client.module';
 import { StorageModule } from './core/storage/storage.module';
-import { StorageDriver } from './core/app-config/enums/storage-driver.enum';
+import { StorageDriver } from './core/storage/types/storage-driver.enum';
 @Module({
   imports: [
     DatabaseModule.forRoot({

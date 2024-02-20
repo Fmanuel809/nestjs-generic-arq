@@ -1,4 +1,4 @@
-import { StorageDriver } from '../enums/storage-driver.enum';
+import { StorageDriver } from '../../storage/types/storage-driver.enum';
 
 export interface IAppConfig {
   appName: string;

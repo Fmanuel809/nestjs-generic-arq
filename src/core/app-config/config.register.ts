@@ -3,7 +3,7 @@ import { ConfigKey } from './enums/config-key.enum';
 import { Environment } from './enums/env.enum';
 import { IDatabaseConfig } from './interfaces/database.interface';
 import { IAppConfig } from './interfaces/app-config.interface';
-import { StorageDriver } from './enums/storage-driver.enum';
+import { StorageDriver } from '../storage/types/storage-driver.enum';
 import { IS3Config } from './interfaces/s3-config.interface';
 
 const APPConfig = registerAs<IAppConfig>(ConfigKey.App, () => {

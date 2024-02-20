@@ -1,4 +1,4 @@
-import { StorageDriver } from 'src/core/app-config/enums/storage-driver.enum';
+import { StorageDriver } from 'src/core/storage/types/storage-driver.enum';
 import { IS3Config } from 'src/core/app-config/interfaces/s3-config.interface';
 
 /**

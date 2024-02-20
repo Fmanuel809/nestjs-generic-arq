@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
 import { IStorageOptions } from './interfaces/storage-options.interface';
-import { StorageDriver } from '../app-config/enums/storage-driver.enum';
+import { StorageDriver } from './types/storage-driver.enum';
 import { MinioModule } from 'nestjs-minio-client';
 import { STORAGE_OPTIONS } from './constants';
 import { StorageService } from './providers/storage.service';
